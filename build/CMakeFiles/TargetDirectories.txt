@@ -1,0 +1,3 @@
+/home/dawid/Public/studia/rownolegle/build/CMakeFiles/rownolegle.dir
+/home/dawid/Public/studia/rownolegle/build/CMakeFiles/edit_cache.dir
+/home/dawid/Public/studia/rownolegle/build/CMakeFiles/rebuild_cache.dir

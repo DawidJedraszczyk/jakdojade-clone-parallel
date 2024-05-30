@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/CppPostgresProject.dir/src/main.cpp.o CMakeFiles/CppPostgresProject.dir/src/database_queries.cpp.o -o CppPostgresProject  -lpqxx 

@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/rownolegle.dir/src/main.cpp.o CMakeFiles/rownolegle.dir/src/algorithm.cpp.o CMakeFiles/rownolegle.dir/src/database_queries.cpp.o -o rownolegle  -lpqxx /usr/lib64/libcurl.so 
