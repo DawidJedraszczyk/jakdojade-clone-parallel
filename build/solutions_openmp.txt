@@ -1,4 +1,4 @@
-Elapsed Time: 5.25197 seconds
+Elapsed Time: 3.57735 seconds
 Bus Line: 11, Direction: Nowa Krępa piekarnia, Departure Time: 12:43:00, Arrival Time: 14:51:00, Start Stop: Gorzycka V, Goal Stop: Grunwaldzka I
 
 Bus Line: 10, Direction: Komuny Paryskiej, Departure Time: 12:28:00, Arrival Time: 12:43:00, Start Stop: Rejtana Prefabet, Goal Stop: 548

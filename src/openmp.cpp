@@ -191,13 +191,15 @@ std::vector<Solution> find_route_without_changing_bus_openmp(pqxx::connection &c
 
     #pragma omp parallel
     {
+        pqxx::connection thread_conn(conn.connection_string());
+        pqxx::work thread_txn(thread_conn);
         std::map<std::pair<std::string, std::string>, Solution> thread_earliest_solutions;
 
         #pragma omp for nowait
         for (size_t i = 0; i < nearest_start_stops.size(); ++i) {
             const auto &start_stop = nearest_start_stops[i];
-            pqxx::connection thread_conn(conn.connection_string());
-            pqxx::work txn(thread_conn);
+            // pqxx::connection thread_conn(conn.connection_string());
+            // pqxx::work txn(thread_conn);
 
             std::string query = "SELECT bl.name, bl.direction, bd1.time AS departure_time, bd2.time AS arrival_time, bd2.bus_stop_id AS goal_stop_id, "
                                 "bs1.ordinal_number AS start_ordinal, bs2.ordinal_number AS goal_ordinal "
@@ -206,13 +208,13 @@ std::vector<Solution> find_route_without_changing_bus_openmp(pqxx::connection &c
                                 "JOIN route_search_busdeparture bd2 ON bl.id = bd2.bus_line_id "
                                 "JOIN route_search_busstopinbusline bs1 ON bl.id = bs1.bus_line_id AND bd1.bus_stop_id = bs1.bus_stop_id "
                                 "JOIN route_search_busstopinbusline bs2 ON bl.id = bs2.bus_line_id AND bd2.bus_stop_id = bs2.bus_stop_id "
-                                "WHERE bd1.bus_stop_id = " + txn.quote(start_stop.id) + " "
-                                "AND bd1.time >= " + txn.quote(time) + " "
+                                "WHERE bd1.bus_stop_id = " + thread_txn.quote(start_stop.id) + " "
+                                "AND bd1.time >= " + thread_txn.quote(time) + " "
                                 "AND bd1.departure_ordinal_number = bd2.departure_ordinal_number "
-                                "AND bd1.route_day = " + txn.quote(day_type) + " "
+                                "AND bd1.route_day = " + thread_txn.quote(day_type) + " "
                                 "ORDER BY bd1.time";
 
-            pqxx::result result = txn.exec(query);
+            pqxx::result result = thread_txn.exec(query);
 
             for (auto row : result) {
                 std::string bus_line = row["name"].c_str();
@@ -241,6 +243,7 @@ std::vector<Solution> find_route_without_changing_bus_openmp(pqxx::connection &c
                         }
                     }
                 }
+
             }
         }
 
@@ -252,6 +255,8 @@ std::vector<Solution> find_route_without_changing_bus_openmp(pqxx::connection &c
                 earliest_solutions[key] = sol;
             }
         }
+
+        thread_txn.commit();
     }
 
     for (const auto &entry : earliest_solutions) {
@@ -270,101 +275,107 @@ std::vector<std::variant<Solution, SolutionTwoBuses>> find_route_with_changing_b
     std::vector<BusStop> nearest_goal_stops = get_nearest_stops_openmp(conn, goal_coords.latitude, goal_coords.longitude, 10);
     std::set<std::pair<std::string, std::string>> first_bus_list;
     
-    for (const auto &start_stop : nearest_start_stops) {
-        pqxx::work txn(conn);
-        std::string query = "SELECT bl.name, bl.direction, bd1.time AS departure_time, bd2.time AS arrival_time, bd2.bus_stop_id AS second_stop_id, "
+    #pragma omp parallel
+    {
+        pqxx::connection thread_conn(conn.connection_string());
+        pqxx::work thread_txn(thread_conn);
+
+        #pragma omp for nowait
+        for (const auto &start_stop : nearest_start_stops) {
+            std::string query = "SELECT bl.name, bl.direction, bd1.time AS departure_time, bd2.time AS arrival_time, bd2.bus_stop_id AS second_stop_id, "
+                                "bs1.ordinal_number AS start_ordinal, bs2.ordinal_number AS goal_ordinal "
+                                "FROM route_search_busline bl "
+                                "JOIN route_search_busdeparture bd1 ON bl.id = bd1.bus_line_id "
+                                "JOIN route_search_busdeparture bd2 ON bl.id = bd2.bus_line_id "
+                                "JOIN route_search_busstopinbusline bs1 ON bl.id = bs1.bus_line_id AND bd1.bus_stop_id = bs1.bus_stop_id "
+                                "JOIN route_search_busstopinbusline bs2 ON bl.id = bs2.bus_line_id AND bd2.bus_stop_id = bs2.bus_stop_id "
+                                "WHERE bd1.bus_stop_id = " + thread_txn.quote(start_stop.id) + " "
+                                "AND bd1.time >= " + thread_txn.quote(time) + " "
+                                "AND bd1.departure_ordinal_number = bd2.departure_ordinal_number "
+                                "AND bd1.route_day = " + thread_txn.quote(day_type) + " "
+                                "ORDER BY bd1.time";
+            pqxx::result result = thread_txn.exec(query);
+
+            for (auto row : result) {
+                std::string bus_line = row["name"].c_str();
+                std::string direction = row["direction"].c_str();
+                std::string departure_time = row["departure_time"].c_str();
+                std::string arrival_time = row["arrival_time"].c_str();
+                std::string second_stop_id = row["second_stop_id"].c_str();
+                int start_ordinal = row["start_ordinal"].as<int>();
+                int goal_ordinal = row["goal_ordinal"].as<int>();
+                bool goal_station = false;
+                first_bus_list.insert({bus_line, direction});
+
+                if (start_ordinal < goal_ordinal && used_buses.find(bus_line) == used_buses.end()) {
+                    for (const auto &goal_stop : nearest_goal_stops) {
+                        if (goal_stop.id == second_stop_id) {
+                            goal_station = true;
+                            SolutionTwoBuses solTwoBuses;
+                            solTwoBuses.bus_line = bus_line;
+                            solTwoBuses.direction = direction;
+                            solTwoBuses.departure_time = departure_time;
+                            solTwoBuses.arrival_time = arrival_time;
+                            solTwoBuses.start_stop = start_stop.name;
+                            solTwoBuses.goal_stop = goal_stop.name;
+
+                            auto key = std::make_pair(bus_line, direction);
+                            if (earliest_solutions.find(key) == earliest_solutions.end() || solTwoBuses.departure_time < earliest_solutions[key].departure_time) {
+                                earliest_solutions[key] = solTwoBuses;
+                            }
+                        }
+                    }
+
+                    if (!goal_station) {
+                        std::string query_second_bus = "SELECT bl.name, bl.direction, bd1.time AS departure_time, bd2.time AS arrival_time, bd2.bus_stop_id AS second_stop_id, "
                             "bs1.ordinal_number AS start_ordinal, bs2.ordinal_number AS goal_ordinal "
                             "FROM route_search_busline bl "
                             "JOIN route_search_busdeparture bd1 ON bl.id = bd1.bus_line_id "
                             "JOIN route_search_busdeparture bd2 ON bl.id = bd2.bus_line_id "
                             "JOIN route_search_busstopinbusline bs1 ON bl.id = bs1.bus_line_id AND bd1.bus_stop_id = bs1.bus_stop_id "
                             "JOIN route_search_busstopinbusline bs2 ON bl.id = bs2.bus_line_id AND bd2.bus_stop_id = bs2.bus_stop_id "
-                            "WHERE bd1.bus_stop_id = " + txn.quote(start_stop.id) + " "
-                            "AND bd1.time >= " + txn.quote(time) + " "
+                            "WHERE bd1.bus_stop_id = " + thread_txn.quote(second_stop_id) + " "
+                            "AND bl.name != " + thread_txn.quote(bus_line) + " "
+                            "AND bd1.time >= " + thread_txn.quote(arrival_time) + " "
                             "AND bd1.departure_ordinal_number = bd2.departure_ordinal_number "
-                            "AND bd1.route_day = " + txn.quote(day_type) + " "
+                            "AND bd1.route_day = " + thread_txn.quote(day_type) + " "
                             "ORDER BY bd1.time";
-        pqxx::result result = txn.exec(query);
+                        pqxx::result result_second_bus = thread_txn.exec(query_second_bus);
 
-        for (auto row : result) {
-            std::string bus_line = row["name"].c_str();
-            std::string direction = row["direction"].c_str();
-            std::string departure_time = row["departure_time"].c_str();
-            std::string arrival_time = row["arrival_time"].c_str();
-            std::string second_stop_id = row["second_stop_id"].c_str();
-            int start_ordinal = row["start_ordinal"].as<int>();
-            int goal_ordinal = row["goal_ordinal"].as<int>();
-            bool goal_station = false;
-            first_bus_list.insert({bus_line, direction});
+                        for (auto row : result_second_bus) {
+                            std::string second_bus_line = row["name"].c_str();
+                            std::string second_direction = row["direction"].c_str();
+                            std::string second_departure_time = row["departure_time"].c_str();
+                            std::string second_arrival_time = row["arrival_time"].c_str();
+                            std::string third_stop_id = row["second_stop_id"].c_str();
+                            int second_start_ordinal = row["start_ordinal"].as<int>();
+                            int second_goal_ordinal = row["goal_ordinal"].as<int>();
+                            bool second_goal_station = false;
 
-            if (start_ordinal < goal_ordinal && used_buses.find(bus_line) == used_buses.end()) {
-                for (const auto &goal_stop : nearest_goal_stops) {
-                    if (goal_stop.id == second_stop_id) {
-                        goal_station = true;
-                        SolutionTwoBuses solTwoBuses;
-                        solTwoBuses.bus_line = bus_line;
-                        solTwoBuses.direction = direction;
-                        solTwoBuses.departure_time = departure_time;
-                        solTwoBuses.arrival_time = arrival_time;
-                        solTwoBuses.start_stop = start_stop.name;
-                        solTwoBuses.goal_stop = goal_stop.name;
+                            if (first_bus_list.find({second_bus_line, second_direction}) == first_bus_list.end() && used_buses.find(second_bus_line) == used_buses.end()) {
+                                for (const auto &goal_stop : nearest_goal_stops) {
+                                    if (goal_stop.id == third_stop_id) {
+                                        second_goal_station = true;
 
-                        auto key = std::make_pair(bus_line, direction);
-                        if (earliest_solutions.find(key) == earliest_solutions.end() || solTwoBuses.departure_time < earliest_solutions[key].departure_time) {
-                            earliest_solutions[key] = solTwoBuses;
-                        }
-                    }
-                }
+                                        SolutionTwoBuses solTwoBuses;
+                                        solTwoBuses.bus_line = bus_line;
+                                        solTwoBuses.direction = direction;
+                                        solTwoBuses.departure_time = departure_time;
+                                        solTwoBuses.arrival_time = arrival_time;
+                                        solTwoBuses.start_stop = start_stop.name;
+                                        solTwoBuses.goal_stop = second_stop_id;
 
-                if (!goal_station) {
-                    std::string query_second_bus = "SELECT bl.name, bl.direction, bd1.time AS departure_time, bd2.time AS arrival_time, bd2.bus_stop_id AS second_stop_id, "
-                        "bs1.ordinal_number AS start_ordinal, bs2.ordinal_number AS goal_ordinal "
-                        "FROM route_search_busline bl "
-                        "JOIN route_search_busdeparture bd1 ON bl.id = bd1.bus_line_id "
-                        "JOIN route_search_busdeparture bd2 ON bl.id = bd2.bus_line_id "
-                        "JOIN route_search_busstopinbusline bs1 ON bl.id = bs1.bus_line_id AND bd1.bus_stop_id = bs1.bus_stop_id "
-                        "JOIN route_search_busstopinbusline bs2 ON bl.id = bs2.bus_line_id AND bd2.bus_stop_id = bs2.bus_stop_id "
-                        "WHERE bd1.bus_stop_id = " + txn.quote(second_stop_id) + " "
-                        "AND bl.name != " + txn.quote(bus_line) + " "
-                        "AND bd1.time >= " + txn.quote(arrival_time) + " "
-                        "AND bd1.departure_ordinal_number = bd2.departure_ordinal_number "
-                        "AND bd1.route_day = " + txn.quote(day_type) + " "
-                        "ORDER BY bd1.time";
-                    pqxx::result result_second_bus = txn.exec(query_second_bus);
+                                        solTwoBuses.second_bus_line = second_bus_line;
+                                        solTwoBuses.second_departure_time = second_departure_time;
+                                        solTwoBuses.second_arrival_time = second_arrival_time;
+                                        solTwoBuses.second_start_stop = second_stop_id;
+                                        solTwoBuses.second_goal_stop = goal_stop.name;
+                                        solTwoBuses.second_direction = second_direction;
 
-                    for (auto row : result_second_bus) {
-                        std::string second_bus_line = row["name"].c_str();
-                        std::string second_direction = row["direction"].c_str();
-                        std::string second_departure_time = row["departure_time"].c_str();
-                        std::string second_arrival_time = row["arrival_time"].c_str();
-                        std::string third_stop_id = row["second_stop_id"].c_str();
-                        int second_start_ordinal = row["start_ordinal"].as<int>();
-                        int second_goal_ordinal = row["goal_ordinal"].as<int>();
-                        bool second_goal_station = false;
-
-                        if (first_bus_list.find({second_bus_line, second_direction}) == first_bus_list.end() && used_buses.find(second_bus_line) == used_buses.end()) {
-                            for (const auto &goal_stop : nearest_goal_stops) {
-                                if (goal_stop.id == third_stop_id) {
-                                    second_goal_station = true;
-
-                                    SolutionTwoBuses solTwoBuses;
-                                    solTwoBuses.bus_line = bus_line;
-                                    solTwoBuses.direction = direction;
-                                    solTwoBuses.departure_time = departure_time;
-                                    solTwoBuses.arrival_time = arrival_time;
-                                    solTwoBuses.start_stop = start_stop.name;
-                                    solTwoBuses.goal_stop = second_stop_id;
-
-                                    solTwoBuses.second_bus_line = second_bus_line;
-                                    solTwoBuses.second_departure_time = second_departure_time;
-                                    solTwoBuses.second_arrival_time = second_arrival_time;
-                                    solTwoBuses.second_start_stop = second_stop_id;
-                                    solTwoBuses.second_goal_stop = goal_stop.name;
-                                    solTwoBuses.second_direction = second_direction;
-
-                                    auto second_key = std::make_pair(second_bus_line, second_direction);
-                                    if (earliest_solutions.find(second_key) == earliest_solutions.end() || solTwoBuses.second_departure_time < earliest_solutions[second_key].second_departure_time) {
-                                        earliest_solutions[second_key] = solTwoBuses;
+                                        auto second_key = std::make_pair(second_bus_line, second_direction);
+                                        if (earliest_solutions.find(second_key) == earliest_solutions.end() || solTwoBuses.second_departure_time < earliest_solutions[second_key].second_departure_time) {
+                                            earliest_solutions[second_key] = solTwoBuses;
+                                        }
                                     }
                                 }
                             }
@@ -372,7 +383,10 @@ std::vector<std::variant<Solution, SolutionTwoBuses>> find_route_with_changing_b
                     }
                 }
             }
+
         }
+
+        thread_txn.commit();
     }
 
     for (const auto &entry : earliest_solutions) {
