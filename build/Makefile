@@ -129,54 +129,6 @@ rownolegle/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/build
 .PHONY : rownolegle/fast
 
-src/algorithm.o: src/algorithm.cpp.o
-.PHONY : src/algorithm.o
-
-# target to build an object file
-src/algorithm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/algorithm.cpp.o
-.PHONY : src/algorithm.cpp.o
-
-src/algorithm.i: src/algorithm.cpp.i
-.PHONY : src/algorithm.i
-
-# target to preprocess a source file
-src/algorithm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/algorithm.cpp.i
-.PHONY : src/algorithm.cpp.i
-
-src/algorithm.s: src/algorithm.cpp.s
-.PHONY : src/algorithm.s
-
-# target to generate assembly for a file
-src/algorithm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/algorithm.cpp.s
-.PHONY : src/algorithm.cpp.s
-
-src/database_queries.o: src/database_queries.cpp.o
-.PHONY : src/database_queries.o
-
-# target to build an object file
-src/database_queries.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/database_queries.cpp.o
-.PHONY : src/database_queries.cpp.o
-
-src/database_queries.i: src/database_queries.cpp.i
-.PHONY : src/database_queries.i
-
-# target to preprocess a source file
-src/database_queries.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/database_queries.cpp.i
-.PHONY : src/database_queries.cpp.i
-
-src/database_queries.s: src/database_queries.cpp.s
-.PHONY : src/database_queries.s
-
-# target to generate assembly for a file
-src/database_queries.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/database_queries.cpp.s
-.PHONY : src/database_queries.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -201,6 +153,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/openmp.o: src/openmp.cpp.o
+.PHONY : src/openmp.o
+
+# target to build an object file
+src/openmp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/openmp.cpp.o
+.PHONY : src/openmp.cpp.o
+
+src/openmp.i: src/openmp.cpp.i
+.PHONY : src/openmp.i
+
+# target to preprocess a source file
+src/openmp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/openmp.cpp.i
+.PHONY : src/openmp.cpp.i
+
+src/openmp.s: src/openmp.cpp.s
+.PHONY : src/openmp.s
+
+# target to generate assembly for a file
+src/openmp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/openmp.cpp.s
+.PHONY : src/openmp.cpp.s
+
+src/sequence.o: src/sequence.cpp.o
+.PHONY : src/sequence.o
+
+# target to build an object file
+src/sequence.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/sequence.cpp.o
+.PHONY : src/sequence.cpp.o
+
+src/sequence.i: src/sequence.cpp.i
+.PHONY : src/sequence.i
+
+# target to preprocess a source file
+src/sequence.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/sequence.cpp.i
+.PHONY : src/sequence.cpp.i
+
+src/sequence.s: src/sequence.cpp.s
+.PHONY : src/sequence.s
+
+# target to generate assembly for a file
+src/sequence.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rownolegle.dir/build.make CMakeFiles/rownolegle.dir/src/sequence.cpp.s
+.PHONY : src/sequence.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -210,15 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rownolegle"
-	@echo "... src/algorithm.o"
-	@echo "... src/algorithm.i"
-	@echo "... src/algorithm.s"
-	@echo "... src/database_queries.o"
-	@echo "... src/database_queries.i"
-	@echo "... src/database_queries.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/openmp.o"
+	@echo "... src/openmp.i"
+	@echo "... src/openmp.s"
+	@echo "... src/sequence.o"
+	@echo "... src/sequence.i"
+	@echo "... src/sequence.s"
 .PHONY : help
 
 

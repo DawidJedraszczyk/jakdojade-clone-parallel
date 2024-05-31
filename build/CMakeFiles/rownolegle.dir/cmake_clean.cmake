@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/rownolegle.dir/src/algorithm.cpp.o"
-  "CMakeFiles/rownolegle.dir/src/algorithm.cpp.o.d"
-  "CMakeFiles/rownolegle.dir/src/database_queries.cpp.o"
-  "CMakeFiles/rownolegle.dir/src/database_queries.cpp.o.d"
   "CMakeFiles/rownolegle.dir/src/main.cpp.o"
   "CMakeFiles/rownolegle.dir/src/main.cpp.o.d"
+  "CMakeFiles/rownolegle.dir/src/openmp.cpp.o"
+  "CMakeFiles/rownolegle.dir/src/openmp.cpp.o.d"
+  "CMakeFiles/rownolegle.dir/src/sequence.cpp.o"
+  "CMakeFiles/rownolegle.dir/src/sequence.cpp.o.d"
   "rownolegle"
   "rownolegle.pdb"
 )

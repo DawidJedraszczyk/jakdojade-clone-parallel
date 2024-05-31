@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/rownolegle.dir/src/main.cpp.o CMakeFiles/rownolegle.dir/src/algorithm.cpp.o CMakeFiles/rownolegle.dir/src/database_queries.cpp.o -o rownolegle  -lpqxx /usr/lib64/libcurl.so 
+/usr/bin/c++ CMakeFiles/rownolegle.dir/src/main.cpp.o CMakeFiles/rownolegle.dir/src/sequence.cpp.o CMakeFiles/rownolegle.dir/src/openmp.cpp.o -o rownolegle  -lpqxx /usr/lib64/libcurl.so /usr/lib/gcc/x86_64-redhat-linux/13/libgomp.so /usr/lib64/libpthread.a 

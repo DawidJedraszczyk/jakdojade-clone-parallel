@@ -1,0 +1,9 @@
+Elapsed Time: 6.5583 seconds
+Bus Line: 11, Direction: Nowa Krępa piekarnia, Departure Time: 12:43:00, Arrival Time: 14:51:00, Start Stop: Gorzycka V, Goal Stop: Grunwaldzka I
+
+Bus Line: 10, Direction: Komuny Paryskiej, Departure Time: 12:28:00, Arrival Time: 12:43:00, Start Stop: Rejtana Prefabet, Goal Stop: 548
+Second Bus Line: 14, Second Direction: Kwiatków, Second Departure Time: 13:19:00, Second Arrival Time: 18:38:00, Second Start Stop: 548, Second Goal Stop: Limanowskiego Piaski
+
+Bus Line: 10, Direction: Komuny Paryskiej, Departure Time: 12:28:00, Arrival Time: 12:41:00, Start Stop: Rejtana Prefabet, Goal Stop: 59
+Second Bus Line: 14, Second Direction: Przeskok, Second Departure Time: 12:44:00, Second Arrival Time: 13:30:00, Second Start Stop: 59, Second Goal Stop: Limanowskiego Wenecja
+

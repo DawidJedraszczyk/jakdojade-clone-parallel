@@ -83,48 +83,50 @@ CMakeFiles/rownolegle.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rownolegle.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dawid/Public/studia/rownolegle/src/main.cpp -o CMakeFiles/rownolegle.dir/src/main.cpp.s
 
-CMakeFiles/rownolegle.dir/src/algorithm.cpp.o: CMakeFiles/rownolegle.dir/flags.make
-CMakeFiles/rownolegle.dir/src/algorithm.cpp.o: /home/dawid/Public/studia/rownolegle/src/algorithm.cpp
-CMakeFiles/rownolegle.dir/src/algorithm.cpp.o: CMakeFiles/rownolegle.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dawid/Public/studia/rownolegle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rownolegle.dir/src/algorithm.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rownolegle.dir/src/algorithm.cpp.o -MF CMakeFiles/rownolegle.dir/src/algorithm.cpp.o.d -o CMakeFiles/rownolegle.dir/src/algorithm.cpp.o -c /home/dawid/Public/studia/rownolegle/src/algorithm.cpp
+CMakeFiles/rownolegle.dir/src/sequence.cpp.o: CMakeFiles/rownolegle.dir/flags.make
+CMakeFiles/rownolegle.dir/src/sequence.cpp.o: /home/dawid/Public/studia/rownolegle/src/sequence.cpp
+CMakeFiles/rownolegle.dir/src/sequence.cpp.o: CMakeFiles/rownolegle.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dawid/Public/studia/rownolegle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rownolegle.dir/src/sequence.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rownolegle.dir/src/sequence.cpp.o -MF CMakeFiles/rownolegle.dir/src/sequence.cpp.o.d -o CMakeFiles/rownolegle.dir/src/sequence.cpp.o -c /home/dawid/Public/studia/rownolegle/src/sequence.cpp
 
-CMakeFiles/rownolegle.dir/src/algorithm.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rownolegle.dir/src/algorithm.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dawid/Public/studia/rownolegle/src/algorithm.cpp > CMakeFiles/rownolegle.dir/src/algorithm.cpp.i
+CMakeFiles/rownolegle.dir/src/sequence.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rownolegle.dir/src/sequence.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dawid/Public/studia/rownolegle/src/sequence.cpp > CMakeFiles/rownolegle.dir/src/sequence.cpp.i
 
-CMakeFiles/rownolegle.dir/src/algorithm.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rownolegle.dir/src/algorithm.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dawid/Public/studia/rownolegle/src/algorithm.cpp -o CMakeFiles/rownolegle.dir/src/algorithm.cpp.s
+CMakeFiles/rownolegle.dir/src/sequence.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rownolegle.dir/src/sequence.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dawid/Public/studia/rownolegle/src/sequence.cpp -o CMakeFiles/rownolegle.dir/src/sequence.cpp.s
 
-CMakeFiles/rownolegle.dir/src/database_queries.cpp.o: CMakeFiles/rownolegle.dir/flags.make
-CMakeFiles/rownolegle.dir/src/database_queries.cpp.o: /home/dawid/Public/studia/rownolegle/src/database_queries.cpp
-CMakeFiles/rownolegle.dir/src/database_queries.cpp.o: CMakeFiles/rownolegle.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dawid/Public/studia/rownolegle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rownolegle.dir/src/database_queries.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rownolegle.dir/src/database_queries.cpp.o -MF CMakeFiles/rownolegle.dir/src/database_queries.cpp.o.d -o CMakeFiles/rownolegle.dir/src/database_queries.cpp.o -c /home/dawid/Public/studia/rownolegle/src/database_queries.cpp
+CMakeFiles/rownolegle.dir/src/openmp.cpp.o: CMakeFiles/rownolegle.dir/flags.make
+CMakeFiles/rownolegle.dir/src/openmp.cpp.o: /home/dawid/Public/studia/rownolegle/src/openmp.cpp
+CMakeFiles/rownolegle.dir/src/openmp.cpp.o: CMakeFiles/rownolegle.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dawid/Public/studia/rownolegle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rownolegle.dir/src/openmp.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rownolegle.dir/src/openmp.cpp.o -MF CMakeFiles/rownolegle.dir/src/openmp.cpp.o.d -o CMakeFiles/rownolegle.dir/src/openmp.cpp.o -c /home/dawid/Public/studia/rownolegle/src/openmp.cpp
 
-CMakeFiles/rownolegle.dir/src/database_queries.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rownolegle.dir/src/database_queries.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dawid/Public/studia/rownolegle/src/database_queries.cpp > CMakeFiles/rownolegle.dir/src/database_queries.cpp.i
+CMakeFiles/rownolegle.dir/src/openmp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rownolegle.dir/src/openmp.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dawid/Public/studia/rownolegle/src/openmp.cpp > CMakeFiles/rownolegle.dir/src/openmp.cpp.i
 
-CMakeFiles/rownolegle.dir/src/database_queries.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rownolegle.dir/src/database_queries.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dawid/Public/studia/rownolegle/src/database_queries.cpp -o CMakeFiles/rownolegle.dir/src/database_queries.cpp.s
+CMakeFiles/rownolegle.dir/src/openmp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rownolegle.dir/src/openmp.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dawid/Public/studia/rownolegle/src/openmp.cpp -o CMakeFiles/rownolegle.dir/src/openmp.cpp.s
 
 # Object files for target rownolegle
 rownolegle_OBJECTS = \
 "CMakeFiles/rownolegle.dir/src/main.cpp.o" \
-"CMakeFiles/rownolegle.dir/src/algorithm.cpp.o" \
-"CMakeFiles/rownolegle.dir/src/database_queries.cpp.o"
+"CMakeFiles/rownolegle.dir/src/sequence.cpp.o" \
+"CMakeFiles/rownolegle.dir/src/openmp.cpp.o"
 
 # External object files for target rownolegle
 rownolegle_EXTERNAL_OBJECTS =
 
 rownolegle: CMakeFiles/rownolegle.dir/src/main.cpp.o
-rownolegle: CMakeFiles/rownolegle.dir/src/algorithm.cpp.o
-rownolegle: CMakeFiles/rownolegle.dir/src/database_queries.cpp.o
+rownolegle: CMakeFiles/rownolegle.dir/src/sequence.cpp.o
+rownolegle: CMakeFiles/rownolegle.dir/src/openmp.cpp.o
 rownolegle: CMakeFiles/rownolegle.dir/build.make
 rownolegle: /usr/lib64/libcurl.so
+rownolegle: /usr/lib/gcc/x86_64-redhat-linux/13/libgomp.so
+rownolegle: /usr/lib64/libpthread.a
 rownolegle: CMakeFiles/rownolegle.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dawid/Public/studia/rownolegle/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable rownolegle"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rownolegle.dir/link.txt --verbose=$(VERBOSE)

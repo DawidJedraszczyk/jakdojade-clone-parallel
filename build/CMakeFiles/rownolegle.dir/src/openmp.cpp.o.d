@@ -1,5 +1,5 @@
-CMakeFiles/rownolegle.dir/src/main.cpp.o: \
- /home/dawid/Public/studia/rownolegle/src/main.cpp \
+CMakeFiles/rownolegle.dir/src/openmp.cpp.o: \
+ /home/dawid/Public/studia/rownolegle/src/openmp.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/c++config.h \
@@ -127,18 +127,7 @@ CMakeFiles/rownolegle.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/chrono \
- /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
- /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h \
- /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
- /usr/include/c++/13/limits /usr/include/c++/13/ctime \
- /usr/include/c++/13/bits/parse_numbers.h \
- /home/dawid/Public/studia/rownolegle/src/sequence.h \
- /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/pqxx/pqxx \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/pqxx/pqxx \
  /usr/include/pqxx/internal/header-pre.hxx \
  /usr/include/pqxx/config-public-compiler.h /usr/include/c++/13/ciso646 \
  /usr/include/pqxx/array.hxx /usr/include/c++/13/utility \
@@ -147,8 +136,12 @@ CMakeFiles/rownolegle.dir/src/main.cpp.o: \
  /usr/include/pqxx/internal/encodings.hxx \
  /usr/include/pqxx/binarystring.hxx /usr/include/c++/13/memory \
  /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
- /usr/include/c++/13/bits/align.h /usr/include/c++/13/bits/unique_ptr.h \
+ /usr/include/c++/13/bits/align.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/c++/13/bits/unique_ptr.h \
  /usr/include/c++/13/bits/shared_ptr.h \
  /usr/include/c++/13/bits/shared_ptr_base.h \
  /usr/include/c++/13/bits/allocated_ptr.h \
@@ -167,14 +160,18 @@ CMakeFiles/rownolegle.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/array \
+ /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/array \
  /usr/include/c++/13/compare /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/uniform_int_dist.h /usr/include/pqxx/except.hxx \
- /usr/include/pqxx/types.hxx /usr/include/c++/13/iterator \
- /usr/include/c++/13/bits/stream_iterator.h /usr/include/pqxx/util.hxx \
- /usr/include/c++/13/cassert /usr/include/assert.h \
+ /usr/include/pqxx/types.hxx /usr/include/c++/13/cstdint \
+ /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
+ /usr/include/pqxx/util.hxx /usr/include/c++/13/cassert \
+ /usr/include/assert.h /usr/include/c++/13/limits \
  /usr/include/c++/13/version /usr/include/pqxx/version.hxx \
  /usr/include/pqxx/internal/libpq-forward.hxx /usr/include/pqxx/zview.hxx \
  /usr/include/pqxx/strconv.hxx /usr/include/c++/13/algorithm \
@@ -188,11 +185,13 @@ CMakeFiles/rownolegle.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
  /usr/include/c++/13/optional /usr/include/c++/13/variant \
+ /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/pqxx/internal/ignore-deprecated-pre.hxx \
  /usr/include/pqxx/internal/ignore-deprecated-post.hxx \
  /usr/include/pqxx/blob.hxx /usr/include/c++/13/filesystem \
- /usr/include/c++/13/bits/fs_fwd.h /usr/include/c++/13/bits/fs_path.h \
- /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/fs_fwd.h /usr/include/c++/13/bits/chrono.h \
+ /usr/include/c++/13/ratio /usr/include/c++/13/ctime \
+ /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/locale \
  /usr/include/c++/13/bits/locale_facets_nonio.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/time_members.h \
  /usr/include/c++/13/x86_64-redhat-linux/bits/messages_members.h \
@@ -223,10 +222,62 @@ CMakeFiles/rownolegle.dir/src/main.cpp.o: \
  /usr/include/pqxx/internal/result_iter.hxx \
  /usr/include/pqxx/robusttransaction.hxx /usr/include/pqxx/stream_to.hxx \
  /usr/include/pqxx/subtransaction.hxx /usr/include/pqxx/time.hxx \
- /usr/include/pqxx/transactor.hxx \
+ /usr/include/c++/13/chrono /usr/include/pqxx/transactor.hxx \
  /usr/include/pqxx/internal/header-post.hxx \
  /home/dawid/Public/studia/rownolegle/src/openmp.h \
- /usr/include/c++/13/fstream \
- /usr/include/c++/13/x86_64-redhat-linux/bits/basic_file.h \
- /usr/include/c++/13/x86_64-redhat-linux/bits/c++io.h \
- /usr/include/c++/13/bits/fstream.tcc
+ /home/dawid/Public/studia/rownolegle/src/sequence.h \
+ /usr/include/curl/curl.h /usr/include/curl/curlver.h \
+ /usr/include/curl/system.h /usr/include/sys/socket.h \
+ /usr/include/bits/types/struct_iovec.h /usr/include/bits/socket.h \
+ /usr/include/bits/socket_type.h /usr/include/bits/sockaddr.h \
+ /usr/include/asm/socket.h /usr/include/asm-generic/socket.h \
+ /usr/include/linux/posix_types.h /usr/include/linux/stddef.h \
+ /usr/include/asm/posix_types.h /usr/include/asm/posix_types_64.h \
+ /usr/include/asm-generic/posix_types.h /usr/include/asm/bitsperlong.h \
+ /usr/include/asm-generic/bitsperlong.h /usr/include/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/bits/types/struct_osockaddr.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/syslimits.h \
+ /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+ /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+ /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+ /usr/include/bits/uio_lim.h /usr/include/sys/time.h \
+ /usr/include/curl/easy.h /usr/include/curl/multi.h \
+ /usr/include/curl/curl.h /usr/include/curl/urlapi.h \
+ /usr/include/curl/options.h /usr/include/curl/header.h \
+ /usr/include/curl/websockets.h \
+ /home/dawid/Public/studia/rownolegle/src/include/json.hpp \
+ /usr/include/c++/13/forward_list /usr/include/c++/13/bits/forward_list.h \
+ /usr/include/c++/13/bits/forward_list.tcc /usr/include/c++/13/valarray \
+ /usr/include/c++/13/cmath /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
+ /usr/include/bits/fp-fast.h \
+ /usr/include/bits/mathcalls-helper-functions.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
+ /usr/include/bits/iscanonical.h /usr/include/c++/13/bits/specfun.h \
+ /usr/include/c++/13/tr1/gamma.tcc \
+ /usr/include/c++/13/tr1/special_function_util.h \
+ /usr/include/c++/13/tr1/bessel_function.tcc \
+ /usr/include/c++/13/tr1/beta_function.tcc \
+ /usr/include/c++/13/tr1/ell_integral.tcc \
+ /usr/include/c++/13/tr1/exp_integral.tcc \
+ /usr/include/c++/13/tr1/hypergeometric.tcc \
+ /usr/include/c++/13/tr1/legendre_function.tcc \
+ /usr/include/c++/13/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/13/tr1/poly_hermite.tcc \
+ /usr/include/c++/13/tr1/poly_laguerre.tcc \
+ /usr/include/c++/13/tr1/riemann_zeta.tcc \
+ /usr/include/c++/13/bits/valarray_array.h \
+ /usr/include/c++/13/bits/valarray_array.tcc \
+ /usr/include/c++/13/bits/valarray_before.h \
+ /usr/include/c++/13/bits/slice_array.h \
+ /usr/include/c++/13/bits/valarray_after.h \
+ /usr/include/c++/13/bits/gslice.h \
+ /usr/include/c++/13/bits/gslice_array.h \
+ /usr/include/c++/13/bits/mask_array.h \
+ /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/set \
+ /usr/include/c++/13/bits/stl_set.h \
+ /usr/include/c++/13/bits/stl_multiset.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/omp.h

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/dawid/Public/studia/rownolegle/src/include
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = -std=gnu++17 -fopenmp
 
